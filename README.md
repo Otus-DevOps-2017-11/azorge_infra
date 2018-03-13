@@ -1,5 +1,19 @@
 # azorge_infra
 
+#### Homework 6:
+1. Удаляем фаервол правило: <br/>
+`gcloud compute firewall-rules delete default-puma-server`
+
+2. Создаем новое правило для фаервола: <br/>
+`gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --source-tags=puma-server --source-ranges=0.0.0.0/0 --description="allow 9292 port"`
+
+3. Создаем vm и деплоим приложение: <br/>
+startup-script <br/>
+`gcloud compute instances create reddit-app-for-test --boot-disk-size=10GB --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b --metadata-from-file startup-script=startup_script.sh`
+или startup-script-url<br/>
+`gcloud compute instances create reddit-app-for-test --boot-disk-size=10GB --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b --metadata-from-file startup-script-url=http://url_to_startup_script.sh`
+
+ 
 #### Homework 5:
 1. подключения к `internalhost` в одну команду с локального хоста:<br />
 `ssh -t -A appuser@35.195.53.45 ssh 10.132.0.3`
