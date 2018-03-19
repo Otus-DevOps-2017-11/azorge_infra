@@ -1,4 +1,15 @@
 # azorge_infra
+#### Homework 8:
+1. Определение `input` переменных для приватного ключа и зоны.
+2. Заполнен `terraform.tfvars.example`
+3. форматирование terraform конфигов с помощью `terraform fmt`
+
+`*` и `**`:
+1. Описано добавление ключей для `appuser,appuser2,appuser3`
+2. Добален HTTP балансировщик
+3. Через параметр `count` настраивается количество инстансов с приложением (по дефолту 1)
+
+
 #### Homework 7:
 reddit-base шаблон: <br/>
 `packer validate -var-file=variables.json mod_ubuntu16.json` <br/>
