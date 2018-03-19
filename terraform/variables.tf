@@ -23,3 +23,8 @@ variable private_key_path {
 variable disk_image {
   description = "Disk image"
 }
+
+variable number_of_nodes {
+  description = "Number of nodes"
+  default     = "1"
+}
