@@ -1,3 +1,7 @@
+data "test_app" "puma_app" {
+  template = "${file("${path.module}/files/puma.service.tpl")}"
+}
+
 resource "google_compute_instance" "app" {
   name         = "reddit-app"
   machine_type = "g1-small"
@@ -28,8 +32,30 @@ resource "google_compute_instance" "app" {
     agent       = false
     private_key = "${file(var.private_key_path)}"
   }
+
+  provisioner "file" {
+    content     = "${data.test_app.puma_app.rendered}"
+    destination = "/tmp/puma.service"
+  }
+
+  provisioner "remote-exec" {
+    script = "${path.module}/files/deploy.sh"
+  }
 }
 
 resource "google_compute_address" "app_ip" {
   name = "reddit-app-ip"
+}
+
+resource "google_compute_firewall" "firewall_puma" {
+  name    = "puma-firewall-rule"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["9292"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["reddit-app"]
 }

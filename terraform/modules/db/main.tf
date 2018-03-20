@@ -1,3 +1,7 @@
+data "test_db" "mongod" {
+  template = "${file("${path.module}/files/mongod.conf.tpl")}"
+}
+
 resource "google_compute_instance" "db" {
   name         = "reddit-db"
   machine_type = "g1-small"
@@ -17,6 +21,18 @@ resource "google_compute_instance" "db" {
 
   metadata {
     ssh-keys = "appuser:${file(var.public_key_path)}"
+  }
+
+  provisioner "file" {
+    content     = "${data.test_db.mongod.rendered}"
+    destination = "/tmp/mongod.conf"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mv /tmp/mongod.conf /etc/mongod.conf",
+      "sudo systemctl restart mongod",
+    ]
   }
 }
 
