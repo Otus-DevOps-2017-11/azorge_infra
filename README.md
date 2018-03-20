@@ -1,4 +1,17 @@
 # azorge_infra
+#### Homework 9:
+
+Настройка и хранение стейт файлов на удаленном бэкэнде gcs <br/>
+```
+cd stage\prod
+terraform init
+terraform apply -auto-approve=true
+terraform destroy 
+```
+
+ В `modules/app` и `modules/db` добавил `provisioner "file"` и `provisioner "remote-exec"`
+ для запуска приложения.
+
 #### Homework 8:
 1. Определение `input` переменных для приватного ключа и зоны.
 2. Заполнен `terraform.tfvars.example`
