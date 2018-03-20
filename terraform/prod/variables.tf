@@ -24,11 +24,6 @@ variable disk_image {
   description = "Disk image"
 }
 
-variable number_of_nodes {
-  description = "Number of nodes"
-  default     = "1"
-}
-
 variable app_disk_image {
   description = "Disk image for reddit app"
   default     = "reddit-app-base"
@@ -37,4 +32,9 @@ variable app_disk_image {
 variable db_disk_image {
   description = "Disk image for reddit db"
   default     = "reddit-db-base"
+}
+
+variable connection_source_range {
+  description = "Allowed source IP addresses"
+  default     = ["0.0.0.0/0"]
 }
