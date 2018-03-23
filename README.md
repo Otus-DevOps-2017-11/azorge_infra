@@ -1,4 +1,16 @@
 # azorge_infra
+#### Homework 11:
+1. Создание ansible playbooks: <br/>
+	* один плейбук, один сценарий `reddit_app_one_play.yml`
+	* один плейбук, но много сценариев `reddit_app_multiple_plays.yml`
+	* много плейбуков `app.yml` `db.yml` `deploy.yml`
+2. Измение провижионера для пакер образов на ansible плейбуки и сборка новых образов
+3. dynamic inventory для GCP c помощью gce.py <br/>
+	делал по гайду: `http://docs.ansible.com/ansible/latest/guide_gce.html` <br/>
+    `ansible-playbook site.yml -i ./gce.py`
+
+
+
 #### Homework 10:
 
 1. создание инвентори файлов для ansible в разных форматах:
