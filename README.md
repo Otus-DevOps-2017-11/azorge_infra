@@ -1,4 +1,14 @@
 # azorge_infra
+#### Homework 12:
+1. Выделил роли: `roles/app` `roles/db`
+2. Перенес все плейбуки в  `playbooks`
+3. Разделил окружение на `prod` и `stage`, stage используется по дефолту
+4. В terraform так же открывается 80 порт для nginx
+5. Все лишнее уехало в  папку `old`
+
+
+
+
 #### Homework 11:
 1. Создание ansible playbooks: <br/>
 	* один плейбук, один сценарий `reddit_app_one_play.yml`
