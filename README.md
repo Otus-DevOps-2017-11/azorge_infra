@@ -1,12 +1,21 @@
 # azorge_infra
+
+#### Homework 13:
+1. Перевел локальную инфраструктуру на `vargand`
+2. Добавил провижионинг `ansible`
+3. Доработка и параметризация ролей `db` и `app`
+4. Корректная работа проксирования приложения с помощью nginx
+5. Тестирование ролей с помощью `molecule` в `venv`
+6. Добавлен тест для проверки что БД слушает по порту `27017`
+7. Переключение сбора образов пакером на использование ролей
+
+
 #### Homework 12:
 1. Выделил роли: `roles/app` `roles/db`
 2. Перенес все плейбуки в  `playbooks`
 3. Разделил окружение на `prod` и `stage`, stage используется по дефолту
 4. В terraform так же открывается 80 порт для nginx
 5. Все лишнее уехало в  папку `old`
-
-
 
 
 #### Homework 11:
@@ -18,11 +27,9 @@
 3. dynamic inventory для GCP c помощью gce.py <br/>
 	делал по гайду: `http://docs.ansible.com/ansible/latest/guide_gce.html` <br/>
     `ansible-playbook site.yml -i ./gce.py`
-
-
+    
 
 #### Homework 10:
-
 1. создание инвентори файлов для ansible в разных форматах:
 ```
 ansible all -m ping -i inventory
@@ -34,7 +41,6 @@ ansible all -m ping -i inventory.json
 
 
 #### Homework 9:
-
 Настройка и хранение стейт файлов на удаленном бэкэнде gcs <br/>
 ```
 cd stage\prod
@@ -45,6 +51,7 @@ terraform destroy
 
  В `modules/app` и `modules/db` добавил `provisioner "file"` и `provisioner "remote-exec"`
  для запуска приложения.
+
 
 #### Homework 8:
 1. Определение `input` переменных для приватного ключа и зоны.
@@ -109,4 +116,5 @@ ProxyCommand ssh bastion nc %h %p</pre>
 
 <pre>Host: bastion, ext IP: 35.195.53.45, int IP: 10.132.0.3
 Host: someinternalhost, ext IP: 10.132.0.4</pre>
+
 
