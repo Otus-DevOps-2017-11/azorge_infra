@@ -1,4 +1,19 @@
 # azorge_infra
+#### Homework 7:
+reddit-base шаблон: <br/>
+`packer validate -var-file=variables.json mod_ubuntu16.json` <br/>
+`packer build -var-file=variables.json mod_ubuntu16.json`
+
+reddit-full шаблон:<br/>
+`packer validate -var-file=variables.json immutable.json` <br/>
+`packer build -var-file=variables.json immutable.json`
+
+```
+cat config-scripts/create-reddit-vm.sh 
+#!/usr/bin/env bash
+
+gcloud compute instances create reddit-app  --boot-disk-size=10GB --image-family=reddit-full --tags "default-puma-server" --preemptible  --restart-on-failure
+```
 
 #### Homework 6:
 1. Удаляем фаервол правило: <br/>
@@ -9,7 +24,7 @@
 
 3. Создаем vm и деплоим приложение: <br/>
 startup-script <br/>
-`gcloud compute instances create reddit-app-for-test --boot-disk-size=10GB --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b --metadata-from-file startup-script=startup_script.sh`
+`gcloud compute instances create reddit-app-for-test --boot-disk-size=10GB --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b --metadata-from-file startup-script=startup_script.sh`<br/>
 или startup-script-url<br/>
 `gcloud compute instances create reddit-app-for-test --boot-disk-size=10GB --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b --metadata-from-file startup-script-url=http://url_to_startup_script.sh`
 
