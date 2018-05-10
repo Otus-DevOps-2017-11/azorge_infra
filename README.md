@@ -1,4 +1,16 @@
 # azorge_infra
+#### Homework 10:
+
+1. создание инвентори файлов для ansible в разных форматах:
+```
+ansible all -m ping -i inventory
+ansible all -m ping -i inventory.yml
+ansible all -m ping -i inventory.json
+```
+2. разделение хостов по группам
+3. использование ansible модулей: `command, shell, git, systemd, service` 
+
+
 #### Homework 9:
 
 Настройка и хранение стейт файлов на удаленном бэкэнде gcs <br/>
