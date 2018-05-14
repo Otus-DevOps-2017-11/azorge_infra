@@ -5,3 +5,4 @@ variables.json
 *.tfvars
 *.retry
 .terraform/
+jdauphant.nginx
